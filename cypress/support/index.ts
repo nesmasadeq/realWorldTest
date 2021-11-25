@@ -1,6 +1,7 @@
 // @ts-check
 import "@cypress/code-coverage/support";
 import "./commands";
+import "./transaction-commands"
 import { isMobile } from "./utils";
 
 beforeEach(() => {
