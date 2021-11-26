@@ -17,3 +17,13 @@ Cypress.Commands.overwrite("login",(originalFn,username,password)=>{
     cy.get('button[type="submit"]').should('contain','Sign In').click()
     cy.url().should('include','')
 })
+//Create new bank account
+Cypress.Commands.add('createBankAccount',(bankName,routingNumber,accountNumber)=>{
+    cy.get('#bankaccount-bankName-input').type(bankName).should('have.attr','placeholder','Bank Name')
+    .and('have.value',bankName).and('be.focused')
+    cy.get('#bankaccount-routingNumber-input').type(routingNumber).should('have.attr','placeholder','Routing Number')
+    .and('have.value',routingNumber).and('be.focused')
+    cy.get('#bankaccount-accountNumber-input').type(accountNumber).should('have.attr','placeholder','Account Number')
+    .and('have.value',accountNumber).and('be.focused')
+    cy.get('button[data-test="bankaccount-submit"]').should('not.be.disabled').click()
+})
