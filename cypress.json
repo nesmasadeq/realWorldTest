@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
+  "fixturesFolder":"data",
   "projectId": "7s5okt",
   "integrationFolder": "cypress/tests",
   "viewportHeight": 1000,
