@@ -57,6 +57,7 @@ Cypress.Commands.add('checkAddedAccount', (bankNameSelector, bankName) => {
 
 Cypress.Commands.add('logout',()=>{
     cy.get('[data-test="sidenav-signout"]').should('contain' , 'Logout').click()
+    cy.url().should('include','/signin')
 })
 Cypress.Commands.add('checkSubmitButton', (buttonSelector) => {
     let bankName = $('#bankaccount-bankName-input').val
