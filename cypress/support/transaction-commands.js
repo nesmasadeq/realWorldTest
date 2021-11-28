@@ -54,12 +54,13 @@ Cypress.Commands.add('checkAddedAccount', (bankNameSelector, bankName) => {
     cy.url().should('include', '/bankaccounts')
     cy.get(bankNameSelector).should('contain', bankName)
 })
+
+Cypress.Commands.add('logout',()=>{
+    cy.get('[data-test="sidenav-signout"]').should('contain' , 'Logout').click()
+})
 Cypress.Commands.add('checkSubmitButton', (buttonSelector) => {
     let bankName = $('#bankaccount-bankName-input').val
     let routingNumber = $('#bankaccount-routingNumber-input').val
     let accountNumber = $('accountNumber').val
 
-})
-Cypress.Commands.add('logout',()=>{
-    cy.get('[data-test="sidenav-signout"]').should('contain' , 'Logout').click()
 })

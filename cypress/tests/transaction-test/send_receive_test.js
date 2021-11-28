@@ -150,8 +150,25 @@ describe("Sending and Receiving Transaction",()=>{
     
     })
     context("Receiving Transactions",()=>{
-
-    
+        it("Verify loging the registered reciver user",()=>{
+            cy.login(receiverUserName,receiverPassword)
+        })
+        it("Verify the reciver user logged successfully",()=>{
+            cy.get('div:nth-child(2) > h6.MuiTypography-root.MuiTypography-subtitle2')
+            .should('contain',receiverUserName)
+        })
+        it("verify the user notification displayed",()=>{
+            cy.get('.MuiIconButton-colorInherit > span.MuiIconButton-label > span > span').should('be.visible')
+            .and('have.class','.makeStyles-customBadge-391')
+        })
+        it("Verify clicking on notification icon",()=>
+        {
+            cy.get('.MuiIconButton-colorInherit > span.MuiIconButton-label > span > span').click()
+        })
+        //verify the
+        after(()=>{
+            cy.logout()
+        })
     })
     
     // Preserve cookie in every test
