@@ -7,7 +7,7 @@ Cypress.Commands.add("register", (firstName, lastName, username, password, confi
     cy.get('#password').type(password).should('have.value', password).and('be.focused')
     cy.get('#confirmPassword').type(confirmPassword).should('have.value', confirmPassword).and('be.focused')
     cy.get('span.MuiButton-label').should('contain', 'Sign Up').click()
-    cy.url().should('include', '/signin')
+    cy.url().should('include','/signin')
 });
 //Overwrite Login command
 Cypress.Commands.overwrite("login", (originalFn, username, password) => {
@@ -23,7 +23,7 @@ Cypress.Commands.add('createBankAccount', (bankName, routingNumber, accountNumbe
     cy.wait(5000).then(() => {
         cy.get('body').then((elem) => {
             if (elem.find('button[data-test="user-onboarding-next"]').length > 0) {
-                cy.get('button[data-test="user-onboarding-next"]', { timeout: 10000 }).should('contain', 'Next').click({ force: true })
+                cy.get('button[data-test="user-onboarding-next"]', { timeout: 5000 }).should('contain', 'Next').click({ force: true })
                 cy.get('div[data-test="user-onboarding-dialog-title"]').should('contain', 'Create Bank Account')
                     .and('be.visible')
                 //Verify filling bank acount feilds
@@ -39,7 +39,7 @@ Cypress.Commands.add('createBankAccount', (bankName, routingNumber, accountNumbe
                 //Verify the finished modal displyed after successfully creating account
                 cy.get('div[data-test="user-onboarding-dialog-title"]').should('contain', 'Finished')
                 //Verify clicking on done button
-                cy.get('button[data-test="user-onboarding-next"]', { timeout: 10000 }).should('contain', 'Done').click({ force: true })
+                cy.get('button[data-test="user-onboarding-next"]', { timeout: 5000 }).should('contain', 'Done').click({ force: true })
                 //Verify the finished modal disapear after clicking done button
                 cy.get('div[data-test="user-onboarding-dialog-title"]').should('not.be.visible')
             }
